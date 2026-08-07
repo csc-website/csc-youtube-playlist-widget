@@ -2,7 +2,7 @@ async function loadVideos() {
   const container = document.getElementById("videos");
 
   try {
-    const response = await fetch("videos.json", {
+    const response = await fetch("./videos.json?v=" + Date.now(), {
       cache: "no-store"
     });
 
@@ -30,7 +30,7 @@ async function loadVideos() {
 
       const thumbnail = document.createElement("img");
       thumbnail.src = video.thumbnail;
-      thumbnail.alt = "";
+      thumbnail.alt = video.title;
       thumbnail.loading = "lazy";
 
       thumbnailLink.appendChild(thumbnail);
@@ -63,6 +63,7 @@ async function loadVideos() {
     });
 
   } catch (error) {
+    console.error("YouTube widget error:", error);
     container.innerHTML =
       '<p class="status">Unable to load videos.</p>';
   }
