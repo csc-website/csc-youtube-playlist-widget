@@ -54,7 +54,7 @@ for item in data.get("items", []):
     videos.append(
         {
             "title": title,
-            "date": dt.strftime("%m/%d/%Y"),
+            "date": dt.strftime("%B %-d, %Y"),
             "link": f"https://www.youtube.com/watch?v={video_id}",
             "thumbnail": thumbnail,
             "published": published,
