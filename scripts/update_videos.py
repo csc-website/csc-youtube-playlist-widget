@@ -61,8 +61,6 @@ for item in data.get("items", []):
         }
     )
 
-videos.sort(key=lambda video: video["published"], reverse=True)
-
 videos = videos[:LIMIT]
 
 if len(videos) < LIMIT:
