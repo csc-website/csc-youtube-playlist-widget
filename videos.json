@@ -1,11 +1,5 @@
 [
   {
-    "title": "Private video",
-    "date": "September 29, 2026",
-    "link": "https://www.youtube.com/watch?v=99Br2aMZJkA",
-    "thumbnail": "https://i.ytimg.com/vi/99Br2aMZJkA/mqdefault.jpg"
-  },
-  {
     "title": "Making the most of your CSC membership",
     "date": "September 16, 2026",
     "link": "https://www.youtube.com/watch?v=LC1aCG2vkJw",
@@ -58,5 +52,11 @@
     "date": "June 17, 2026",
     "link": "https://www.youtube.com/watch?v=AWyMaj7RDr4",
     "thumbnail": "https://i.ytimg.com/vi/AWyMaj7RDr4/mqdefault.jpg"
+  },
+  {
+    "title": "2026 Rising Star Awards, College Division - Ashleigh Jones & Lance McKenzie",
+    "date": "June 17, 2026",
+    "link": "https://www.youtube.com/watch?v=f6Ox9JhQFGk",
+    "thumbnail": "https://i.ytimg.com/vi/f6Ox9JhQFGk/mqdefault.jpg"
   }
 ]
