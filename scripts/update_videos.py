@@ -5,8 +5,12 @@ from datetime import datetime
 import requests
 
 API_KEY = os.environ["YOUTUBE_API_KEY"]
+
+# YouTube playlist: All Uploads
 PLAYLIST_ID = "PLa-g29pgu3Osw8pLpADbygS0OyNopp6Qc"
-LIMIT = 5
+
+# Number of videos to display
+LIMIT = 10
 
 API_URL = "https://www.googleapis.com/youtube/v3/playlistItems"
 
@@ -61,6 +65,10 @@ for item in data.get("items", []):
         }
     )
 
+# Sort newest videos first
+videos.sort(key=lambda video: video["published"], reverse=True)
+
+# Keep only the 10 newest videos
 videos = videos[:LIMIT]
 
 if len(videos) < LIMIT:
