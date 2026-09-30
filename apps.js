@@ -18,7 +18,7 @@ async function loadVideos() {
 
     container.innerHTML = "";
 
-    videos.slice(0, 5).forEach((video) => {
+    videos.slice(0, 10).forEach((video) => {
       const article = document.createElement("article");
       article.className = "video";
 
