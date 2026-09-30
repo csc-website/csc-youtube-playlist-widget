@@ -15,7 +15,7 @@ LIMIT = 10
 API_URL = "https://www.googleapis.com/youtube/v3/playlistItems"
 
 params = {
-    "part": "snippet,contentDetails",
+    "part": "snippet,contentDetails,status",
     "playlistId": PLAYLIST_ID,
     "maxResults": 50,
     "key": API_KEY,
@@ -32,6 +32,13 @@ if "error" in data:
 videos = []
 
 for item in data.get("items", []):
+    # Skip private, deleted, or otherwise unavailable videos
+    status = item.get("status", {})
+    privacy_status = status.get("privacyStatus", "")
+
+    if privacy_status != "public":
+        continue
+
     snippet = item.get("snippet", {})
     resource = snippet.get("resourceId", {})
 
@@ -40,6 +47,10 @@ for item in data.get("items", []):
     published = snippet.get("publishedAt")
 
     if not video_id or not title or not published:
+        continue
+
+    # Skip YouTube's placeholder titles for unavailable videos
+    if title.lower() in {"private video", "deleted video"}:
         continue
 
     thumbnails = snippet.get("thumbnails", {})
@@ -68,7 +79,7 @@ for item in data.get("items", []):
 # Sort newest videos first
 videos.sort(key=lambda video: video["published"], reverse=True)
 
-# Keep only the 10 newest videos
+# Keep only the 10 newest usable videos
 videos = videos[:LIMIT]
 
 if len(videos) < LIMIT:
